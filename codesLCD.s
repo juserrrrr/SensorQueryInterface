@@ -9,11 +9,16 @@
 .endm
 
 @ mov r10, 9 bits @r10 tem os bits de transmissao pro LCD
+@ r9 faz a máscara pra pegar bit a bit
+@ r8 é contador de 4 bits
+@ r11 é para registrar o endereço base dos pinos (pin_rs)
 instructionCode:
+    ldr r11, =pin_RS
     and r9, r10, #1 @Mascara para pegar o menos significativo
-    GPIOSet pin_RS, r9 @Setagem do Pino RS
+    GPIOSet r11, r9 @Setagem do Pino RS
     lsr r10, #1
     mov r8, #1 @r8 é contador
+    add
     
 firstNibble:
     and r9, r10, #1 @Mascara para pegar o menos significativo
@@ -32,6 +37,7 @@ lastNibble:
     cmp r8, #4 @comparo com 4 o contador
     ble lastNibble
     enable
+    bx lr
     
     
     
