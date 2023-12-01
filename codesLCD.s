@@ -41,26 +41,6 @@ lastNibble:
     ble lastNibble
     enable
     bx lr
-    
-    
-    
-.macro instructionCode PD7, PD6, PD5, PD4
-    GPIOSet pin_RS, low
-    GPIOSet pin_D4, \PD4 
-    GPIOSet pin_D5, \PD5
-    GPIOSet pin_D6, \PD6
-    GPIOSet pin_D7, \PD7
-
-.endm
-
-
-.macro dataCode PD7, PD6, PD5, PD4
-    GPIOSet pin_RS, high
-    GPIOSet pin_D4, \PD4
-    GPIOSet pin_D5, \PD5 
-    GPIOSet pin_D6, \PD6
-    GPIOSet pin_D7, \PD7
-.endm
 
 .macro enable
     nanoSleep totalLoadingTimeRs
