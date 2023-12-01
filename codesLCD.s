@@ -8,10 +8,33 @@
     GPIOSetDirection output, pin_D7
 .endm
 
-@ mov r10, 9 bits
+@ mov r10, 9 bits @r10 tem os bits de transmissao pro LCD
 instructionCode:
     and r9, r10, #1 @Mascara para pegar o menos significativo
-    GPIOSet pin_RS
+    GPIOSet pin_RS, r9 @Setagem do Pino RS
+    lsr r10, #1
+    mov r8, #1 @r8 é contador
+    
+firstNibble:
+    and r9, r10, #1 @Mascara para pegar o menos significativo
+    GPIOSet pin_D4, r9 @Setagem do Pino 
+    lsr r10, #1
+    addi r8, r8, #1 @incremento o contador
+    cmp r8, #4 @comparo com 4 o contador
+    ble firstNibble
+    enable
+
+lastNibble:
+    and r9, r10, #1 @Mascara para pegar o menos significativo
+    GPIOSet pin_D4, r9 @Setagem do Pino 
+    lsr r10, #1
+    addi r8, r8, #1 @incremento o contador
+    cmp r8, #4 @comparo com 4 o contador
+    ble lastNibble
+    enable
+    
+    
+    
 .macro instructionCode PD7, PD6, PD5, PD4
     GPIOSet pin_RS, low
     GPIOSet pin_D4, \PD4 
