@@ -18,16 +18,18 @@ instructionCode:
     GPIOSet r11, r9 @Setagem do Pino RS
     lsr r10, #1
     mov r8, #1 @r8 é contador
-    add
+    add r11, 0x10 @Vai do pin_RS para o pin_D4 no data
     
 firstNibble:
     and r9, r10, #1 @Mascara para pegar o menos significativo
-    GPIOSet pin_D4, r9 @Setagem do Pino 
+    GPIOSet r11, r9 @Setagem do Pino 
     lsr r10, #1
     addi r8, r8, #1 @incremento o contador
     cmp r8, #4 @comparo com 4 o contador
+    add r11, 0x10 @Vai de um pino para o próximo
     ble firstNibble
     enable
+    sub r11, 0x40 @restaura o valor do endereço para o pin_D4
 
 lastNibble:
     and r9, r10, #1 @Mascara para pegar o menos significativo
@@ -35,6 +37,7 @@ lastNibble:
     lsr r10, #1
     addi r8, r8, #1 @incremento o contador
     cmp r8, #4 @comparo com 4 o contador
+    add r11, 0x10 @Vai de um pino para o próximo
     ble lastNibble
     enable
     bx lr
