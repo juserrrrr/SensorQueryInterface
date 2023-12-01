@@ -75,7 +75,7 @@ success:
 
 
 .macro GPIOSet pin, value
-    ldr r3, =\pin @ base da tabela de informações do pino
+    mov r3, \pin @ base da tabela de informações do pino
     ldr r2, [r3, #8] @ carrega o desvio do vetor dos pinos
     ldr r1, [r8, r2] @ Carrega o estado atual do vetor dos pinos
     ldr r3, [r3, #12] @ carrega a posição requerida do pino no vetor
