@@ -35,7 +35,7 @@ lastNibble:
     and r9, r10, #1 @Mascara para pegar o menos significativo
     GPIOSet pin_D4, r9 @Setagem do Pino 
     lsr r10, #1
-    addi r8, r8, #1 @incremento o contador
+    add r8, r8, #1 @incremento o contador
     cmp r8, #4 @comparo com 4 o contador
     add r11, 0x10 @Vai de um pino para o próximo
     ble lastNibble
@@ -51,18 +51,14 @@ lastNibble:
 .endm
 
 .macro setSecondLine
-    instructionCode high, high, low, low
-    enable
-    instructionCode low, low, low, low
-    enable
+    mov r10, #0b011000000
+    bl instructionCode
     nanoSleep awaitInstruction @ Espera o LCD processar a instrução
 .endm
 
 .macro returnHome
-    instructionCode low, low, low, low
-    enable
-    instructionCode low, low, high, low
-    enable
+    mov r10, #0b000000010
+    bl instructionCode
     nanoSleep awaitInstructionHome @ Espera o LCD processar a instrução de return home
 .endm
 
