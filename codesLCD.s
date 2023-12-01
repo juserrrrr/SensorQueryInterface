@@ -8,7 +8,10 @@
     GPIOSetDirection output, pin_D7
 .endm
 
-
+@ mov r10, 9 bits
+instructionCode:
+    and r9, r10, #1 @Mascara para pegar o menos significativo
+    GPIOSet pin_RS
 .macro instructionCode PD7, PD6, PD5, PD4
     GPIOSet pin_RS, low
     GPIOSet pin_D4, \PD4 
