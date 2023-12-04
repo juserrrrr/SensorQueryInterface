@@ -8,6 +8,7 @@
     GPIOSetDirection output, pin_D7
 .endm
 
+@r12 é para sinalizar se é pra incialização, usando somente 4 bits, ou normal - 8 bits (1 inicialização, 0 - transmissão normal)
 @ mov r10, 9 bits @r10 tem os bits de transmissao pro LCD
 @ r9 faz a máscara pra pegar bit a bit
 @ r8 é contador de 4 bits
@@ -30,7 +31,10 @@ firstNibble:
     ble firstNibble
     enable
     sub r11, 0x40 @restaura o valor do endereço para o pin_D4
-
+    cmp r12, #0
+    beq lastNibble
+    bx lr
+    
 lastNibble:
     and r9, r10, #1 @Mascara para pegar o menos significativo
     GPIOSet pin_D4, r9 @Setagem do Pino 
@@ -53,53 +57,43 @@ lastNibble:
 .macro setSecondLine
     mov r10, #0b011000000
     bl instructionCode
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
 .endm
 
 .macro returnHome
     mov r10, #0b000000010
     bl instructionCode
-    nanoSleep awaitInstructionHome @ Espera o LCD processar a instrução de return home
 .endm
 
 .macro initialize
 
     nanoSleep zeMeMama
-    instructionCode low, low, high, high
-    enable
-
+    mov r10, #3
+    mov r12, #1
+    bl instructionCode
+    
     nanoSleep zeMeMama2
-    instructionCode low, low, high, high
-    enable
+    bl instructionCode
 
     nanoSleep zeMeMama3
-    instructionCode low, low, high, high
-    enable
-    @ ----------- 1 ----------- @
-    instructionCode low, low, high, low @Function set inicialização, mudar para 4 bits
-    enable @ Envia o sinal de enable para o LCD
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
-    @ ----------- 2 ----------- @
-    instructionCode low, low, high, low @Function set código alto
-    enable
-    instructionCode low, high, low, low @Function set código baixo
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
-    @ ----------- 3 ----------- @
-    instructionCode low, low, low, low @Display on/off código alto
-    enable 
-    instructionCode high, low, low, low @Display on/off código baixo
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
+    bl instructionCode
+    mov r10, #2
+    mov r12, #1
+    bl instructionCode
+
+    mov r10, #36
+    mov r12, #1
+    bl instructionCode
+
+    mov r10, #8
+    mov r12, #1
+    bl instructionCode
+    
     @clear display
-    instructionCode low, low, low, low
-    enable
-    instructionCode low, low, low, high
-    enable
-    @ ----------- 4 ----------- @
-    instructionCode low, low, low, low @ entry mode set código alto
-    enable
-    instructionCode low, high, high, low @ entry mode set código baixo
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
+    mov r10, #1
+    mov r12, #1
+    bl instructionCode
+    
+    mov r10, #6
+    mov r12, #1
+    bl instructionCode
 .endm
