@@ -154,7 +154,9 @@ success:
     liveHum:		.word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
                     .word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
                     
-    lastInfo:		.word -1, -1	
+    lastInfo:		.word -1, -1
+
+    currentInfo:    .word -1, -1, -1
     
 @ Padrões de pinagem ----------------=|
 @ PA REGISTER

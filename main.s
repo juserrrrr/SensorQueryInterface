@@ -117,15 +117,15 @@ sendUart:
     and r10, r9, r10           
     cmp r10, #0
 
-    beq end_sendUart            @ caso o envio não esteja liberado, fim da função
+    beq sendUart            @ caso o envio não esteja liberado, loop
 
     str r12, [r9, #uart_thr]     @ envia o valor de r12 pela uart
 
 end_sendUart:
     bx lr
 
-
-@ Reg onde será salvo o valor: r12
+@ Lê a uart e
+@ Salva no .data currentInfo, na ordem endereço, comando, valor
 readUart:
     ldr r9, [=uart3_base, uart_lsr]         @ carregando o registrador do lsr
     lsr r9, #lsr_dr           @ jogando o bit de verificação para a primeira posição
@@ -136,7 +136,33 @@ readUart:
 
     beq end_readUart            @ caso não tenha caractere para ser lido, fim da função
 
-    ldr r12, [r9, #uart_thr]    @ salva o valor que veio pela uart no r12
+    ldr r12, [=uart3_base, #uart_thr]    @ salva o valor que veio pela uart no r12 (endereço)
+
+    ldr r8, =currentInfo    @ endereço da currentInfo
+    str r12, [r8]     @ guarda o valor do endereço na currentInfo
+
+    mov r11, #1                  @ contador para ler os outros 2 bytes
+
+readRemaining:
+    cmp r11, #3
+    beq end_readUart                    @ se o contador = 3, todos os bytes foram lidos
+
+    ldr r9, [=uart3_base, uart_lsr]         @ carregando o registrador do lsr
+    lsr r9, #lsr_dr                         @ jogando o bit de verificação para a primeira posição
+    mov r10, #1                             @ máscara para pegar o primeiro bit
+
+    and r10, r9, r10           
+    cmp r10, #0
+    beq readRemaining                       @ caso não tenha caractere para ser lido, loop até chegar
+
+    add r11, r11, #1                @ somando 1 ao contador
+
+    ldr r12, [=uart3_base, #uart_thr]    @ salva o valor que veio pela uart no r12 (endereço)
+
+    add r8, r8, #4                  @ indo para o proximo índice na currentInfo
+    str r12, [=r8]     @ guarda o valor do endereço na currentInfo
 
 end_readUart:
     bx lr
+
+
