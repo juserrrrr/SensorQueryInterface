@@ -15,14 +15,15 @@
 @ r11 é para registrar o endereço base dos pinos (pin_rs)
 instructionCode:
     ldr r11, =pin_RS
-    and r9, r10, #1 @Mascara para pegar o mais significativo
+    and r9, r10, #0b100000000 @Mascara para pegar o mais significativo
+    mvn r9, r9
     GPIOSet r11, r9 @Setagem do Pino RS
     lsr r10, #1
     mov r8, #1 @r8 é contador
     add r11, 0x10 @Vai do pin_RS para o pin_D4 no data
     
 firstNibble:
-    and r9, r10, #1 @Mascara para pegar o mais significativo
+    and r9, r10, #0b100000000 @Mascara para pegar o mais significativo
     GPIOSet r11, r9 @Setagem do Pino 
     lsr r10, #1
     addi r8, r8, #1 @incremento o contador
@@ -67,7 +68,7 @@ lastNibble:
 .macro initialize
 
     nanoSleep zeMeMama
-    mov r10, #3
+    mov r10, #0b10011
     mov r12, #1
     bl instructionCode
     
@@ -76,24 +77,25 @@ lastNibble:
 
     nanoSleep zeMeMama3
     bl instructionCode
-    mov r10, #2
+    
+    mov r10, #0b10010
     mov r12, #1
     bl instructionCode
 
-    mov r10, #36
+    mov r10, #0b100101000
     mov r12, #1
     bl instructionCode
 
-    mov r10, #8
+    mov r10, #0b100001000
     mov r12, #1
     bl instructionCode
     
     @clear display
-    mov r10, #1
+    mov r10, #0b100000001
     mov r12, #1
     bl instructionCode
     
-    mov r10, #6
+    mov r10, #0b100000110
     mov r12, #1
     bl instructionCode
 .endm
