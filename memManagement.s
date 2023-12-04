@@ -92,6 +92,7 @@ success:
 
 .endm
 
+
 .data
 
     @===============Mensagens de erro=================|
@@ -147,6 +148,14 @@ success:
                 .word 7 @ Posição do vetor para configurar o valor do pino.
 
 
+    liveTemp:		.word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+				    .word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+
+    liveHum:		.word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+                    .word -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+                    
+    lastInfo:		.word -1, -1	
+    
 @ Padrões de pinagem ----------------=|
 @ PA REGISTER
 @ PA PIN (0~7) OFFSET(DESVIO)  : 0x00
