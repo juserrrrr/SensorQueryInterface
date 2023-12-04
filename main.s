@@ -1,5 +1,6 @@
 .include "utils.s"
 .include "codesLCD.s"
+.include "memManagement.s"
 
 .section .text
 .global _start
