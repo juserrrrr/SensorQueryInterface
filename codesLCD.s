@@ -56,12 +56,12 @@ lastNibble:
 .endm
 
 .macro setSecondLine
-    mov r10, #0b011000000
+    mov r10, #0b111000000
     bl instructionCode
 .endm
 
 .macro returnHome
-    mov r10, #0b000000010
+    mov r10, #0b100000010
     bl instructionCode
 .endm
 
