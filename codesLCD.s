@@ -15,14 +15,14 @@
 @ r11 é para registrar o endereço base dos pinos (pin_rs)
 instructionCode:
     ldr r11, =pin_RS
-    and r9, r10, #1 @Mascara para pegar o menos significativo
+    and r9, r10, #1 @Mascara para pegar o mais significativo
     GPIOSet r11, r9 @Setagem do Pino RS
     lsr r10, #1
     mov r8, #1 @r8 é contador
     add r11, 0x10 @Vai do pin_RS para o pin_D4 no data
     
 firstNibble:
-    and r9, r10, #1 @Mascara para pegar o menos significativo
+    and r9, r10, #1 @Mascara para pegar o mais significativo
     GPIOSet r11, r9 @Setagem do Pino 
     lsr r10, #1
     addi r8, r8, #1 @incremento o contador
