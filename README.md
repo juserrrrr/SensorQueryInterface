@@ -15,6 +15,20 @@ Este projeto resulta em um sistema capaz de receber e enviar comandos de requisi
 ## Metodologia
       
 ## Descrição do Projeto:
+Para desenvolvimento do projeto, foi seguido esta etapa de desenvolvimento:
+
+
+Para manipulação de memória de dispositivos em sistemas Linux, como é o caso da Orange Pi, precisamos liberar as operações de leitura e gravação em arquivos especiais no diretório "/dev". Depois, fazemos os mapeamentos dos Pinos que utilizamos no protótipo que são os GPIOs, CCU e UART. Mapeados os pinos, podemos configurá-los e setar suas direções para OUTPUT ou INPUT. Depois é configurado o CCU e a UART e inicializado o display. Essas etapas serão explicadas detalhadamente nas seções posteriores.
+
+O fluxo do programa pode ser visto na figura abaixo:
+
+A tela inicial é a de escolha do sensor e comando, nela o usuário escolhe qual sensor vai ser requisitado e qual comando escolhido. Após essa escolha, ele será direcionado para tela das respostas imediatas, como Status do Sensor e Temperatura/Umidade atual. Se não foi requisitado nenhuma resposta imediata, aparece uma tela de Aguardando. Se na tela dos imediatos for pressionado o botão esquerdo, o usuário irá para a última tela das respostas contínuas; se o botão for o central, irá para a primeira tela dos contínuos; e sempre que apertar o botão direito, voltará para escolha do sensor e comando.
+
+Na tela das temperaturas e umidades contínuas, sempre que o usuário estiver na última tela
+e apertar o botão central, ele retorna para a tela das respostas imediatas, e sempre que estiver na primeira tela e apertar o botão esquerdo, ele também retorna para a tela das respostas imediatas. Só retorna para a escolha do sensor e comando se apertar o botão direito.
+
+Nas telas dos contínuos, ao apertar o botão central, o usuário caminha para “frente”, visualizando dos sensores 0 ao 32; ao apertar o botão esquerdo, ele segue o caminho contrário, do sensor 32 ao 0.
+
 
 ## Resultados e análise dos testes
 
