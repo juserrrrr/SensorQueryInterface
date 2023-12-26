@@ -11,6 +11,7 @@ As ferramentas utilizadas no desenvolvimento do projeto foram:
   - FPGA CYCLONE IV
   - Sensor(es) DHT11
   - Editor de Texto para escrita do código em Assembly e Terminal Linux para conexão SSH com a Orange Pi, compilação e execução do código.
+  - Lucidchart, para construção de fluxogramas.
 
 
 Após o conhecimento e análise das ferramentas, o projeto foi divididao nas seguintes etapas, em ordem cronológica:
