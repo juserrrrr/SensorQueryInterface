@@ -2,40 +2,55 @@
 @ R0 = Tempo em segundos
 @ R1 = Tempo em nanosegundos
 .macro nanoSleep time
-    ldr r0, =\time
-    .ltorg
-    add r1, r0, #4  
-    mov r7, #sys_nanosleep
-    svc 0
+  push {r0, r1, r7}
+  ldr r0, =\time
+  add r1, r0, #4  
+  mov r7, #sys_nanosleep
+  svc 0
+  pop {r0, r1, r7}
 .endm
 
-.data
-    remainingEnableTime:    .word 0         @Segundos
-                            .word 600       @Nano Segundos
 
-    totalLoadingTimeRs:     .word 0         @Segundos
-                            .word 60        @Nano Segundos
+.macro setBtnsPins
+  push {r4, r5}
 
-    totalEnableTimeHigh:    .word 0         @Segundos
-                            .word 450       @Nano Segundos
+  ldr r4, =pin_BTN0
+  mov r5, #input
+  bl setDirectionGPIO
+  
+  ldr r4, =pin_BTN1
+  mov r5, #input
+  bl setDirectionGPIO
 
-    awaitInstruction:       .word 0         @Segundos
-                            .word 40000     @Nano Segundos
+  ldr r4, =pin_BTN2
+  mov r5, #input
+  bl setDirectionGPIO
 
-    awaitInstructionHome:   .word 0         @Segundos
-                            .word 1600000    @Nano Segundos
+  pop {r4, r5}
+.endm
 
-    oneSecond:              .word 1         @Segundos
-                            .word 0         @Nano Segundos
 
-    twoSeconds:             .word 2         @Segundos
-                            .word 0         @Nano Segundos
-    zeMeMama:
-			     .word 0
-			     .word 105000000
-    zeMeMama2:
-    			     .word 0
-			     .word 5500000
-    zeMeMama3:
-    			     .word 0 
-    			     .word 100000
+@ r1: endereço na memoria do botão
+debouncerLoop:
+  push {r0}
+	cmp r0, #1
+	beq notPressed
+loopDeb:
+	nanoSleep fiveMilliSeconds
+  GPIOGet r1   
+	cmp r0, #0
+	beq loopDeb
+notPressed:
+  pop {r0}
+	bx lr
+
+@R4: Valor a ser transformado em 2 ASCII
+convertBinaryToAscii: 
+    push {r4,r5,r6, lr}
+    mov r6, #10
+    udiv r5,r4,r6
+    mul r6, r5, r6
+    sub r4, r4, r6
+    add r0, r5, #0b00110000
+    add r1, r4,#0b00110000
+    pop {r4, r5, r6, pc}
