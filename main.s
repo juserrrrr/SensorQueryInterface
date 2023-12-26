@@ -131,7 +131,6 @@ _start:
 		cmp r0, #0 @Se botão de enter pressionado
 		beq sensorComand
 
-		@nanoSleep twoSeconds
 		ldr r1, =now_command
 		mov r2, #0xFF
 		str r2, [r1]
