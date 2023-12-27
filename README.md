@@ -5,7 +5,7 @@ O acompanhamento remoto de ambientes fundamenta-se primordialmente no paradigma 
 
 Com o crescimento do mercado de Internet das Coisas (IoT), uma empresa que deseja ingressar nesse setor solicitou aos estudantes de Engenharia da Computação da UEFS o desenvolvimento de um protótipo de um sensor digital para o monitoramento de ambientes. O objetivo do protótipo é realizar o monitoramento de um ambiente através da detecção de temperatura e umidade relativa coletadas por sensores DHT11, utilizando para recebimento e envio de comandos o protocolo de transmissão serial UART.
 
-A parte de coleta de dados dos sensores DHT11 já foi desenvolvida em Verilog (linguagem de descrição de Hardware) e programada na FPGA Cyclone IV, e pode ser analisada no repositório X. Neste antigo repositório, a interface com o usuário foi desenvolvida na linguagem C e era dada por meio de dois terminais Linux, um para visualização e outro para envio de comandos.
+A parte de coleta de dados dos sensores DHT11 já foi desenvolvida em Verilog (linguagem de descrição de Hardware) e programada na FPGA Cyclone IV, e pode ser analisada no repositório ![repAntigo](https://github.com/juserrrrr/DigitalSensorQuery). Neste antigo repositório, a interface com o usuário foi desenvolvida na linguagem C e era dada por meio de dois terminais Linux, um para visualização e outro para envio de comandos.
 
 Para este projeto, foi solicitado o desenvolvimento de uma IHM (Interface Homem-Máquina) que apresente em um display LCD as informações do sensor desenvolvido. A interface deve substituir a que foi desenvolvida em linguagem C, atendendo aos mesmos requisitos. O protótipo dessa interface será embutido em um computador de placa única (SBC), mas especificamente na Orange Pi, e seu código deve ser escrito em Assembly para arquitetura ARMv7.
 
@@ -88,6 +88,7 @@ Dentro do arquivo codesLCD.s, há uma macro chamada “initialize’ que deve se
 
 ## Escrita das telas
 Para a escrita de um caractere no display, basta enviarmos seu código binário em ASCII. A tabela ASCII é usada pelo HD44780U para mapear os códigos dos caracteres para os valores correspondentes em sua memória interna, permitindo que o controlador exiba caracteres alfanuméricos e símbolos no display, como pode ser visto na imagem abaixo.
+![ascii](https://github.com/juserrrrr/SensorQueryInterface/blob/b0ca550e366a5af1454874ec5ef0c4820273ada0/ascii.png)
 
 No arquivo codesLCD.s, há uma função “instructionCode” que recebe como parâmetro os 9 bits correspondentes aos pinos RS e os 8 de dados. Essa função envia inicialmente para o pino RS um bit indicando se vai ser uma instrução (mover cursor/display, limpar display, etc…) ou se vai ser uma transmissão de 1 byte ASCII para escrita. Depois ele parte para o envio dos nibbles (4 bits). Envia 4 bits mais significativos, ativa o Enable, depois envia os outros 4 bits menos significativos. Resumidamente, essa função serve para setar algumas funcionalidades do display e para escrever caracteres ASCII.
 
