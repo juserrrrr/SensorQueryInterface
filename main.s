@@ -1,21 +1,18 @@
 .include "utils.s"
 .include "codesLCD.s"
+.include "memManagement.s"
 
 .section .text
 .global _start
 _start:
-    @ mapMem
-    @ nanoSleep oneSecond
+    mapMem
+    nanoSleep oneSecond
     @ GPIOSetDirection output, pin_PA09
-    @ putLCDPinsOutput @Seta os pinos do LCD como output
+    putLCDPinsOutput @Seta os pinos do LCD como output
     @ mov r6, #15
     @ GPIOSet pin_D5, high
-    @ B display
+    B display
     @ B step
-    ldr r9, =pin_D4
-    ldr r10, =pin_D5
-    ldr r11, =pin_D6
-    ldr r12, =pin_D7
 
 @loop: 
 @    GPIOSet pin_PA09, high
@@ -31,38 +28,26 @@ display:
     
     @ ----------- 5 ----------- @
     @Faz o L (0100 1100)
-    dataCode low, high, low, low @ Bits mais altos
-    enable
-    dataCode high, high, low, low @ Bits mais baixos
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
-    
-    
-    @Escreve A (0100 0001)
-    dataCode low, high, low, low
-    enable
-    dataCode low, low, low, high
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
+    mov r10, #76
+    mov r12, #0
+    bl instructionCode
 
-    @ ----------- 6 ----------- @
+    @Escreve A (0100 0001)
+    mov r10, #65
+    mov r12, #0
+    bl instructionCode
 
     setSecondLine @Pula pra próxima linha
     
-
     @ Escreve R (0101 0010)
-    dataCode low, high, low, high
-    enable
-    dataCode low, low, high, low
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
+    mov r10, #82
+    mov r12, #0
+    bl instructionCode
 
     @ Escreve A (0100 0001)
-    dataCode low, high, low, low
-    enable
-    dataCode low, low, low, high
-    enable
-    nanoSleep awaitInstruction @ Espera o LCD processar a instrução
+    mov r10, #65
+    mov r12, #0
+    bl instructionCode
 
     @ ----------- 7 ----------- @
     returnHome
