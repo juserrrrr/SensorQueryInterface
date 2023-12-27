@@ -1,5 +1,3 @@
-
-
 .macro setLcdPins
     ldr r4, =pin_E
     mov r5, #output
@@ -176,5 +174,4 @@ degreesWrite:
 endWrite:
     pop {pc}
     bx lr
-
 

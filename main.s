@@ -455,4 +455,3 @@ _end: @Finalização do programa.
 	tela_aguardando:
 		.ascii "Aguardando ...\n"
 		.asciz ""
-
