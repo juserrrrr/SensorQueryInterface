@@ -22,7 +22,7 @@ Para desenvolvimento do projeto, foi seguido esta ordem de prioridade no código
 Para manipulação de memória de dispositivos em sistemas Linux, como é o caso da Orange Pi, precisamos liberar as operações de leitura e gravação em arquivos especiais no diretório "/dev". Depois, fazemos os mapeamentos dos Pinos que utilizamos no protótipo que são os GPIOs, CCU e UART. Mapeados os pinos, podemos configurá-los e setar suas direções para OUTPUT ou INPUT. Depois é configurado o CCU e a UART e inicializado o display. Essas etapas serão explicadas detalhadamente nas seções posteriores.
 
 O fluxo do programa pode ser visto na figura abaixo:
-![Fluxo do programa](Blank diagram - Page 1(2).png)
+![Fluxo do programa](https://github.com/juserrrrr/SensorQueryInterface/blob/eb957d2f7a3f2744cba2d84afd9683bbc94690fd/Blank%20diagram%20-%20Page%201%20(2).png)
 
 A tela inicial é a de escolha do sensor e comando, nela o usuário escolhe qual sensor vai ser requisitado e qual comando escolhido. Após essa escolha, ele será direcionado para tela das respostas imediatas, como Status do Sensor e Temperatura/Umidade atual. Se não foi requisitado nenhuma resposta imediata, aparece uma tela de Aguardando. Se na tela dos imediatos for pressionado o botão esquerdo, o usuário irá para a última tela das respostas contínuas; se o botão for o central, irá para a primeira tela dos contínuos; e sempre que apertar o botão direito, voltará para escolha do sensor e comando.
 
