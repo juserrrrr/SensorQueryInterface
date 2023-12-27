@@ -356,3 +356,25 @@
 .EQU sys_pkey_free, 396 @ free a protection key
 .EQU sys_statx, 397 @ get file status (extended)
 .EQU sys_rseq, 398 @ restartable sequences
+
+@@ Base address uart3
+.EQU uart3_base, 0x01C28C00
+
+@@ Offsets UART
+.EQU uart_rbr, 0x00         @ Reciever Register
+.EQU uart_thr, 0x00         @ Transmiter Register
+.EQU uart_dll, 0x00         @ Divisor Latch Low (8 bits de baixo do divisor da fórmula)
+.EQU uart_dlh, 0x04         @ Divisor Latch High (8 bits de cima do disisor da fórmula)
+.EQU uart_lcr, 0x0C         @ Divisor Latch Access Bit
+.EQU uart_lsr, 0x14         @ Line Status Register
+
+@@@ Bits para o LCR da UART
+.EQU lcr_dlab, 7            @ 1: permite que seja configurada a baud rate no dll e dlh
+.EQU lcr_pen, 3             @ 0: sem paridade, 1: com paridade
+.EQU lcr_stop, 2            @ 0: 1 stop bit
+.EQU lcr_dls, 0             @ 11: 8 bits em um caractere
+
+@@@ Bits para o LSR da UART (read)
+.EQU lsr_thre, 5            @ 1: livre para escrita no thr
+.EQU lsr_dr, 0              @ 1: existe um caractere para ser lido no rbr
+

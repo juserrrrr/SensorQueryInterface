@@ -9,6 +9,7 @@
     svc 0
 .endm
 
+
 .data
     remainingEnableTime:    .word 0         @Segundos
                             .word 600       @Nano Segundos
@@ -30,6 +31,7 @@
 
     twoSeconds:             .word 2         @Segundos
                             .word 0         @Nano Segundos
+    
     zeMeMama:
 			     .word 0
 			     .word 105000000
