@@ -120,9 +120,8 @@ Existem quatro vetores de words no .data responsáveis por controlar e guardar o
 
 A leitura do RBR é feita constantemente, sempre que o DR (Data Ready) está em 1, indicando que existe algum dado para ser lido, dado esse que sempre será primeiramente um endereço, depois um comando e logo em seguida um valor recebido.
 
-## Resultados e análise dos testes
-## LCD
-## Funcionamento
+### LCD
+#### Funcionamento
 Foi utilizado o controlador de display de cristal líquido (LCD) HD44780U, que consegue exibir caracteres alfanuméricos e símbolos. Ele pode ser configurado para controlar o LCD com um processador de 4 ou 8 bits. O HD44780U possui compatibilidade de função de pino com o HD44780S, possui ROM de gerador de caracteres estendida para um total de 240 fontes de caracteres. Além disso, pode exibir até uma linha de 8 caracteres ou duas linhas de 8 caracteres.
 
 Para protótipo, o display LCD utilizado deve ser configurado para uma interface de 4 bits e com duas linhas de 8 caracteres cada.
