@@ -57,13 +57,13 @@ Um ponto de melhoria que fica evidente é a possibilidade de informar os comando
 Algumas telas do projeto em funcionamento:
 
 Tela de envio de dados:
-![Envio de dados]()
+![Envio de dados](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/envio.jpg)
 
 Tela de situação atual do sensor:
-![Situação atual]()
+![Situação atual](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/sensorok.jpg)
 
-Tela de temperatura e umidade constantes:
-![Tela de temp. e umid. const.]()
+Tela de temperatura e umidade contínuas:
+![Tela de temp. e umid. cont.](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/continuo.jpg)
 
 
 ## Referências
