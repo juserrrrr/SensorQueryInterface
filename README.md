@@ -76,6 +76,7 @@ Dentro do arquivo codesLCD.s, tem uma macro que aciona o Enable. Ela é invocada
 Entendo o funcionamento, as pinagens e os tempos de Enable, podemos assim partir para a parte de inicialização do display. Para utilizar o display devemos antes inicializá-lo, que é basicamente configurá-lo para o nosso propósito de uso.
 
 O processo de inicialização pode ser visto na imagem abaixo:
+
 ![Init](https://github.com/juserrrrr/SensorQueryInterface/blob/dfbb6251106d87d957d39633164ab68cfb4f2d77/inicializacao.png)
 ![Init1](https://github.com/juserrrrr/SensorQueryInterface/blob/dfbb6251106d87d957d39633164ab68cfb4f2d77/inicializacao1.png)
 
