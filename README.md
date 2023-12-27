@@ -46,27 +46,13 @@ A leitura do RBR é feita constantemente, sempre que o DR (Data Ready) está em 
 
 ## Descrição do Projeto:
 
-## Resultados, análise dos testes e conclusão
+## Resultados e conclusão
 
-O projeto cumpriu todas as funções requisitadas, e consegue mostrar as temperaturas e umidades contínuas de diversos sensores, ao mesmo tempo que recebe novas requisições para os demais. Vários desafios foram encontrados e resolvidos durante o desenvolvimento do problema, em especial os que envolviam a interpretação dos datasheets. A inicialização do display LCD e da UART necessitou ampla leitura e diversos testes, já que vários detalhes são necessários para que ambos funcionem corretamente.
+O projeto cumpriu todas as funções requisitadas, e consegue mostrar as temperaturas e umidades contínuas de diversos sensores, ao mesmo tempo que recebe novas requisições para os demais. Vários desafios foram encontrados e resolvidos durante o desenvolvimento e testes do projeto, em especial os que envolviam a interpretação dos datasheets. A inicialização do display LCD e da UART necessitou ampla leitura e diversos testes, já que vários detalhes são necessários para que ambos funcionem corretamente.
 
 A utilização de funções para melhor execução do código também trouxe desafios, já que o uso de registradores sem o devido tratamento para que as informações previamente guardadas neles fossem perdidas trouxe diversos problemas, que foram solucionados com o uso correto das instruções de "push" e "pop".
 
 Um ponto de melhoria que fica evidente é a possibilidade de informar os comandos para o usuário de forma mais intuitiva, como usar a sigla "TC" para indicar que será enviado um comando de "Ativar Temperatura Constante".
-
-Algumas telas do projeto em funcionamento:
-
-Tela de envio de dados:
-(<a href="Envio de Dados"><img src="http://url.to/image.png" align="left" height="48" width="48" ></a>)
-<img src="https://github.com/favicon.ico" width="48">
-
-Tela de situação atual do sensor:
-![Situação atual](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/sensorok.jpg)
-
-Tela de temperatura e umidade contínuas:
-![Tela de temp. e umid. cont.](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/continuo.jpg)
-
-
 ## Referências
 
 ## Autores
