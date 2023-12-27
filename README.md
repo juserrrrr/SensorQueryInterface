@@ -53,6 +53,15 @@ O projeto cumpriu todas as funções requisitadas, e consegue mostrar as tempera
 A utilização de funções para melhor execução do código também trouxe desafios, já que o uso de registradores sem o devido tratamento para que as informações previamente guardadas neles fossem perdidas trouxe diversos problemas, que foram solucionados com o uso correto das instruções de "push" e "pop".
 
 Um ponto de melhoria que fica evidente é a possibilidade de informar os comandos para o usuário de forma mais intuitiva, como usar a sigla "TC" para indicar que será enviado um comando de "Ativar Temperatura Constante".
+
+Algumas telas do projeto em funcionamento:
+
+<img src="https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/continuo.jpg" width="350">
+
+<img src="https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/sensorok.jpg" width="350">
+
+<img src="https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/envio.jpg" width="350">
+
 ## Referências
 
 ## Autores
