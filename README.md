@@ -124,9 +124,10 @@ Exemplo de tela com resposta contínua:
 
 ## Referências
 
-Angel Perles, Eva Pérez-Marín, Ricardo Mercado, J. Damian Segrelles, Ignacio Blanquer, Manuel Zarzo, Fernando J. Garcia-Diego, An energy-efficient internet of things (IoT) architecture for preventive conservation of cultural heritage, Future Generation Computer Systems, 2018, Volume 81, Pages 566-581.
-Tutores, Problema #1 – Interfaces de E/S, 2023.
-Tutores, Problema #2 – Assembly, 2023.
+- Angel Perles, Eva Pérez-Marín, Ricardo Mercado, J. Damian Segrelles, Ignacio Blanquer, Manuel Zarzo, Fernando J. Garcia-Diego, An energy-efficient internet of things (IoT) architecture for preventive conservation of cultural heritage, Future Generation Computer Systems, 2018, Volume 81, Pages 566-581.
+- Tutores, Problema #1 – Interfaces de E/S, 2023.
+- Tutores, Problema #2 – Assembly, 2023.
+- 
 ## Autores
 
 - José Gabriel de Almeida Pontes
