@@ -93,7 +93,7 @@ Para a escrita de um caractere no display, basta enviarmos seu código binário 
 No arquivo codesLCD.s, há uma função “instructionCode” que recebe como parâmetro os 9 bits correspondentes aos pinos RS e os 8 de dados. Essa função envia inicialmente para o pino RS um bit indicando se vai ser uma instrução (mover cursor/display, limpar display, etc…) ou se vai ser uma transmissão de 1 byte ASCII para escrita. Depois ele parte para o envio dos nibbles (4 bits). Envia 4 bits mais significativos, ativa o Enable, depois envia os outros 4 bits menos significativos. Resumidamente, essa função serve para setar algumas funcionalidades do display e para escrever caracteres ASCII.
 
 No mesmo arquivo, há uma função “writeString” que realiza a escrita de strings na tela do display. A cada chamada dessa função, ela limpa o display e escreve uma nova tela nele. Para usá-la, deve ser escrita na seção .data do arquivo main.s uma label com o nome da tela e duas linhas de Strings, como no exemplo abaixo:
-![ascii](https://github.com/juserrrrr/SensorQueryInterface/blob/41df0045b49d04ec156e08ae5c6dc5b9a1700289/ascii.png)
+![boas_vindas](https://github.com/juserrrrr/SensorQueryInterface/blob/41df0045b49d04ec156e08ae5c6dc5b9a1700289/boas_vindas.png)
 
 Deve-se escrever .ascii na primeira linha, porque ao passar um char para um registrador, ele interpreta o seu binário em ASCII. O “\n” é utilizado para identificar que acabou a primeira linha. Deve-se escrever .asciz na segunda linha, pelos mesmos motivos da primeira linha, só que o Z indica que aquela String tem o caractere “\0” que indica o término de String.
 
@@ -114,6 +114,7 @@ Exemplos de telas com respostas imediatas:
 ![status](https://github.com/juserrrrr/SensorQueryInterface/blob/41df0045b49d04ec156e08ae5c6dc5b9a1700289/status.png)
 
 Exemplo de tela com resposta contínua:
+
 ![continuo](https://github.com/juserrrrr/SensorQueryInterface/blob/41df0045b49d04ec156e08ae5c6dc5b9a1700289/continuo.png)
 
 ## Conclusão
