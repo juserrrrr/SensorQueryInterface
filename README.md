@@ -33,13 +33,13 @@ Nas telas dos contínuos, ao apertar o botão central, o usuário caminha para �
 
 
 ## Resultados e análise dos testes
-### LCD
-Funcionamento
+## LCD
+## Funcionamento
 Foi utilizado o controlador de display de cristal líquido (LCD) HD44780U, que consegue exibir caracteres alfanuméricos e símbolos. Ele pode ser configurado para controlar o LCD com um processador de 4 ou 8 bits. O HD44780U possui compatibilidade de função de pino com o HD44780S, possui ROM de gerador de caracteres estendida para um total de 240 fontes de caracteres. Além disso, pode exibir até uma linha de 8 caracteres ou duas linhas de 8 caracteres.
 
 Para protótipo, o display LCD utilizado deve ser configurado para uma interface de 4 bits e com duas linhas de 8 caracteres cada.
 
-Pinagem
+## Pinagem
 Após o mapeamento, conseguimos assim configurar os pinos do LCD e setar as suas direções (INPUT ou OUTPUT). No caso dos pinos usados no projeto, só foram de OUTPUT.
 
 A pinagem do HD44780U é a seguinte:
@@ -63,7 +63,7 @@ Os pinos 1, 2 e 3 são usados para alimentação e contraste, enquanto os pinos 
 
 Para enviar uma instrução ao display, precisa-se setar o valor de RS para 0, setar os bits de dados para os dados de barramento e ativar o pino de enable. Da mesma forma acontece para enviar um dado ao display, como um caractere ou dígito, só muda o valor de RS que deve ser 1.
 
-Tempo de Enable
+## Tempo de Enable
 O pino de Enable é utilizado para sinalizar a transmissão de dados dos outros pinos para o display. A cada envio de dados, devemos acionar o Enable.
 
 Para usar o Enable, deve-se esperar um tempo mínimo de 60 ns (tAS) entre a setagem do pino RS e a subida de sinal do Enable. Depois o sinal de Enable é mantido em alta por um tempo mínimo de 450 ns (PWEH); após este tempo, o sinal pode retomar ao valor 0 (LOW). Entre uma borda de subida do Enable e outra, deve-se esperar um tempo mínimo de 1000 ns (tcycE).
@@ -72,7 +72,7 @@ Dentro do arquivo codesLCD.s, tem uma macro que aciona o Enable. Ela é invocada
 ![Tempo Enable](https://github.com/juserrrrr/SensorQueryInterface/blob/046a89fd62bedb22f2f0a5187745b93a0e264219/tempo%20enable.png)
 ![Tempo Enable1](https://github.com/juserrrrr/SensorQueryInterface/blob/046a89fd62bedb22f2f0a5187745b93a0e264219/tempo%20enable1.png)
 
-Inicialização
+## Inicialização
 Entendo o funcionamento, as pinagens e os tempos de Enable, podemos assim partir para a parte de inicialização do display. Para utilizar o display devemos antes inicializá-lo, que é basicamente configurá-lo para o nosso propósito de uso.
 
 O processo de inicialização pode ser visto na imagem abaixo:
@@ -83,7 +83,7 @@ A segunda etapa é a inicialização de software, que envolve a configuração d
 
 Dentro do arquivo codesLCD.s, há uma macro chamada “initialize’ que deve ser chamada uma única vez no código antes de usar o display. Ela que realiza a inicialização e configuração do LCD.
 
-Escrita das telas
+## Escrita das telas
 Para a escrita de um caractere no display, basta enviarmos seu código binário em ASCII. A tabela ASCII é usada pelo HD44780U para mapear os códigos dos caracteres para os valores correspondentes em sua memória interna, permitindo que o controlador exiba caracteres alfanuméricos e símbolos no display, como pode ser visto na imagem abaixo.
 
 No arquivo codesLCD.s, há uma função “instructionCode” que recebe como parâmetro os 9 bits correspondentes aos pinos RS e os 8 de dados. Essa função envia inicialmente para o pino RS um bit indicando se vai ser uma instrução (mover cursor/display, limpar display, etc…) ou se vai ser uma transmissão de 1 byte ASCII para escrita. Depois ele parte para o envio dos nibbles (4 bits). Envia 4 bits mais significativos, ativa o Enable, depois envia os outros 4 bits menos significativos. Resumidamente, essa função serve para setar algumas funcionalidades do display e para escrever caracteres ASCII.
