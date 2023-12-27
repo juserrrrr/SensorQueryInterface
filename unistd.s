@@ -377,4 +377,3 @@
 @@@ Bits para o LSR da UART (read)
 .EQU lsr_thre, 5            @ 1: livre para escrita no thr
 .EQU lsr_dr, 0              @ 1: existe um caractere para ser lido no rbr
-
