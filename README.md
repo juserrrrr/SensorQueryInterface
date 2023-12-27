@@ -69,6 +69,7 @@ O pino de Enable é utilizado para sinalizar a transmissão de dados dos outros 
 Para usar o Enable, deve-se esperar um tempo mínimo de 60 ns (tAS) entre a setagem do pino RS e a subida de sinal do Enable. Depois o sinal de Enable é mantido em alta por um tempo mínimo de 450 ns (PWEH); após este tempo, o sinal pode retomar ao valor 0 (LOW). Entre uma borda de subida do Enable e outra, deve-se esperar um tempo mínimo de 1000 ns (tcycE).
 
 Dentro do arquivo codesLCD.s, tem uma macro que aciona o Enable. Ela é invocada a cada vez que queremos enviar os dados.
+
 ![Tempo Enable](https://github.com/juserrrrr/SensorQueryInterface/blob/046a89fd62bedb22f2f0a5187745b93a0e264219/tempo%20enable.png)
 ![Tempo Enable1](https://github.com/juserrrrr/SensorQueryInterface/blob/046a89fd62bedb22f2f0a5187745b93a0e264219/tempo%20enable1.png)
 
