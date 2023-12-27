@@ -49,6 +49,8 @@ Após o conhecimento e análise das ferramentas, o projeto foi divididao nas seg
 ### MAPEAMENTO
 O mapeamento constitui um dos pontos-chave do projeto, uma vez que é aplicado em todas as outras funcionalidades necessárias e adicionais. Com esse propósito em mente, para iniciar a compreensão da construção desta parte do projeto, tornou-se imperativo consultar um manual sobre como começar no Raspbian, utilizando o [raspberry pi assembly language](public/raspberry-pi-assembly-language-programming-arm-processor-coding-9781484252864-9781484252871-1484252861_compress.pdf), a fim de compreender conceitos básicos, como as chamadas de sistema para atingir o objetivo proposto. Aqui entra outro detalhe: como o sistema operacional estava instalado em uma Orange Pi, cujo hardware e funcionamento diferem um pouco do Raspberry Pi, foi necessário também consultar o [Datasheet da OrangePi Pc Plus](public/Allwinner_H3_Datasheet_V1.2.pdf) para obter informações mais detalhadas sobre os endereços base e desvios na memória.
 
+Com base nesse conhecimento adquirido, tornou-se evidente a necessidade de desenvolver um arquivo em assembly com o único objetivo de lidar com essa parte específica do projeto. Essa abordagem, naturalmente, busca a modularização, permitindo atender a todas as necessidades sem a constante criação de novos códigos ou alterações nos já existentes. A partir dessa concepção e da leitura dos arquivos mencionados anteriormente, foi essencial a construção de funções e macros. Essas estruturas foram criadas para modificar a direção dos pinos físicos, obter o valor que o pino está recebendo e enviar um valor através do pino, seja em nível lógico alto ou baixo, garantindo assim uma abordagem abrangente e flexível.
+
 
 ## Resultados e análise dos testes
 
