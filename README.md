@@ -175,6 +175,9 @@ Exemplo de tela com resposta contínua:
 - Angel Perles, Eva Pérez-Marín, Ricardo Mercado, J. Damian Segrelles, Ignacio Blanquer, Manuel Zarzo, Fernando J. Garcia-Diego, An energy-efficient internet of things (IoT) architecture for preventive conservation of cultural heritage, Future Generation Computer Systems, 2018, Volume 81, Pages 566-581.
 - Tutores, Problema #1 – Interfaces de E/S, 2023.
 - Tutores, Problema #2 – Assembly, 2023.
+- Allwinner H3 Datasheet Quad-Core OTT Box Processor. [s.l: s.n.]. Disponível em: <https://linux-sunxi.org/images/4/4b/Allwinner_H3_Datasheet_V1.2.pdf>. Acesso em: 27 dez. 2023.
+- HD44780U (LCD-II) (Dot Matrix Liquid Crystal Display Controller/Driver). [s.l: s.n.]. Disponível em: <https://www.sparkfun.com/datasheets/LCD/HD44780.pdf>.
+- SMITH, S. Raspberry Pi Assembly language programming : ARM processor coding. Berkeley, California: Apress, 2019.
 
 ## Autores
 
