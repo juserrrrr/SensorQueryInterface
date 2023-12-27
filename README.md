@@ -16,7 +16,8 @@ Este projeto resulta em um sistema capaz de receber e enviar comandos de requisi
       
 ## Descrição do Projeto:
 Para desenvolvimento do projeto, foi seguido esta ordem de prioridade no código:
-![Ordem de desenvolvimento](Blank diagram - Page 1.png)
+![Ordem de desenvolvimento](https://github.com/juserrrrr/SensorQueryInterface/blob/ce1469873460d11d46e8abbea3d1f5fb7696643e/Blank%20diagram%20-%20Page%201.png)
+
 
 Para manipulação de memória de dispositivos em sistemas Linux, como é o caso da Orange Pi, precisamos liberar as operações de leitura e gravação em arquivos especiais no diretório "/dev". Depois, fazemos os mapeamentos dos Pinos que utilizamos no protótipo que são os GPIOs, CCU e UART. Mapeados os pinos, podemos configurá-los e setar suas direções para OUTPUT ou INPUT. Depois é configurado o CCU e a UART e inicializado o display. Essas etapas serão explicadas detalhadamente nas seções posteriores.
 
