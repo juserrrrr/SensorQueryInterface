@@ -57,7 +57,8 @@ Um ponto de melhoria que fica evidente é a possibilidade de informar os comando
 Algumas telas do projeto em funcionamento:
 
 Tela de envio de dados:
-![Envio de dados](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/envio.jpg)
+(<a href="Envio de Dados"><img src="http://url.to/image.png" align="left" height="48" width="48" ></a>)
+<img src="https://github.com/favicon.ico" width="48">
 
 Tela de situação atual do sensor:
 ![Situação atual](https://github.com/juserrrrr/SensorQueryInterface/blob/mendes/public/sensorok.jpg)
